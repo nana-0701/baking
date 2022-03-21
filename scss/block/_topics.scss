@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+@use "../global" as g;
+
+.topics {
+    padding: 12rem;
+    @include g.mq('tab') {
+        padding: 5rem 5vw;
+    }
+    @include g.mq('sp') {
+        padding: 5rem 0;
+        width: 90%;
+        margin: 0 auto;  
+    }
+    &__wrapper {
+        display: flex;
+        @extend %wrapper;
+        @include g.mq('tab') {
+            display: block;
+        }
+    }
+    &__inner {
+        width: 35%;
+        @include g.mq('tab') {
+            width: 100%;
+        }
+    }
+    &__heading {
+        @include g.mq('tab') {
+            text-align: center;
+            margin-bottom: 5vw;      
+        }
+    }
+    &__content {
+        width: 65%;
+        @include g.mq('tab') {
+            width: 100%;
+        }
+    }
+    &__table {
+        width: 100%;
+        margin: 0 0 2.5rem 0;
+    }
+    &__head {
+        padding: 2rem 3.2rem 2rem 0;
+        border-bottom: 1px dotted;
+        @include g.mq('sp') {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 2rem 0 0 0;
+            border-bottom: 0;
+        }
+    }
+    &__data {
+        border-bottom: 1px dotted;
+        @include g.mq('sp') {
+            display: block;
+            width: 100%;
+        }
+    }
+    &__btn {
+        margin: 0;
+        a {
+            margin: 0 0 0 auto;
+            @include g.btn(#000, 200px, g.$font-color1, #fff);
+        }
+    }
+}
+    
+  

@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+@use "../global" as g;
+
+.footer {
+    padding-top: 12rem;
+    @include g.mq('tab') {
+        padding-top: 5rem;
+    }
+    &__wrapper {
+        width: 95%;
+        margin: 0 auto;
+        max-width: g.$inner-width;
+        @include g.mq('sp') {
+            text-align: center;
+        }
+    }
+    &__high {
+        border-bottom: 1px solid g.$font-color1;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        @include g.mq('tab') {
+            display: block;
+        }
+    }
+    &__heading {
+        margin-bottom: 2.5rem;
+        @include g.mq('sp') {
+            margin-bottom: 3rem;
+        }
+    }
+    &__list {
+        display: flex;
+        margin-bottom: 2.5rem;
+        @include g.mq('sp') {
+            display: block;
+        }
+    }
+    &__item {
+        &:not(:last-of-type) {
+            margin-right: 5rem;
+        }
+        @include g.mq('sp') {
+            width: 100%;
+            margin: 0 0 3rem;      
+        }
+    }
+    &__low {
+        padding: 2.5rem 0 8rem;
+        @include g.mq('sp') {
+            padding-bottom: 5rem;
+        }
+        span {
+            padding-left: 1em;
+        }
+    }
+    &__copyright {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+}
+
+//back to page top
+.arrow {
+    transition: opacity 1s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: map-get(g.$z, text);
+    &.is-fadein {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.js-arrow{
+    position: fixed;
+    right: 30px;
+    bottom: 25px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #b4b4b4;
+    border-radius: 22px;
+    padding: 23px;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        opacity: 0.8;
+        bottom: 15px;
+        box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.5);
+    }
+    &:before {
+        content: "";
+        width: 17px;
+        height: 17px;
+        border-top: solid 5px #fff;
+        border-right: solid 5px #fff;
+        transform: rotate(-45deg);
+        position:  absolute;
+        left: 15px;
+        top: 17px;
+    }
+}

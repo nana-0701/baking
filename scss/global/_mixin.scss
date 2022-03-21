@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+@use "variables" as v;
+
+//media query
+@mixin mq($breakpoint: sp) {
+  @media #{map-get(v.$breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// btn 
+@mixin btn($color, $width, $hover-bg, $hover-col) {
+  color: $color;
+  border: 1px solid $color;
+  max-width: $width;
+  line-height: 60px;
+  text-align: center;
+  &:hover {
+    background: $hover-bg;
+    color: $hover-col;
+  }
+  @media screen and (max-width: 767px) {
+    min-width: $width;
+    margin: 0 auto;
+  }
+}

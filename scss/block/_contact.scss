@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+@use "../global" as g;
+
+.contact {
+    width: 100%;
+    height: 500px;
+    background: url(g.$img-dir + "contact.jpg");
+    background-size: cover;
+    background-position: right top;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include g.mq('sp') {
+        height: 400px;
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: map-get(g.$z, layer);
+    }
+    &__btn {
+        width: 100%;
+        max-width: 300px;
+        z-index: map-get(g.$z, text);
+        a {
+            @include g.btn(#fff, 300px, #fff, g.$font-color1);
+        }
+    }
+}
+  

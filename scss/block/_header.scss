@@ -1,0 +1,228 @@
+@charset "UTF-8";
+
+@use "../global" as g;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: map-get(g.$z, header);
+    padding: 0 4rem;
+    transition: 0.3s;
+    @include g.mq('sp') {
+      padding: 0 2rem;
+      height: 60px;
+    }
+    &__heading {
+        font-size: 1.6rem;
+        margin-right: auto;
+        color: #fff;
+    }
+    &__menu {
+        margin-left: auto;
+    }
+    &__list {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        letter-spacing: 0.2em;
+        color: #fff;
+        @include g.mq('tab') {
+            display: block;
+            color: g.$font-color1;
+        }
+    }
+    &__item {
+        margin-right: 4rem;
+        @include g.mq('tab') {
+            margin: 0 0 3rem 0;
+        }
+    }
+    &__item--phone {
+        padding: 0 1.5rem;
+        border: 1px solid #fff;
+        line-height: 50px;
+        display: block;
+        @include g.mq('tab') {
+            border: 1px solid #000;
+            text-align: center;
+            white-space: nowrap;
+            padding: 0;
+        }
+    }
+    &__item--icon {
+        color: #fff;
+        margin-right: 1rem;
+        font-size: 2rem;
+        @include g.mq('tab') {
+            color: #000
+        }
+    }
+}
+  
+// humburger btn
+.hamburger {
+    display: none;
+    @include g.mq('tab') {
+        display: inline-block;
+        text-decoration: none;
+        appearance: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}
+
+.js-hamburger {
+    @include g.mq('tab') {
+        position: relative;
+        z-index: map-get(g.$z, js-hamburger);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        box-shadow: 0 0 2rem transparent;
+        outline: none;
+        transition: all .3s ease-in-out;
+        margin-left: auto;
+    }
+    @include g.mq('sp') {
+        width: 40px;
+        height: 40px;
+    }
+    &:hover,
+    &:focus {
+        @include g.mq('tab') {
+            box-shadow: 0 0 .5rem rgba(161, 161, 161, 0.5);
+        }
+    }
+    &__line {
+        @include g.mq('tab') {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            width: 18px;
+            height: 2px;
+            background-color: #fff;
+            transition: inherit;
+        }
+        &::before,
+        &::after {
+            @include g.mq('tab') {
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: inherit;
+                content: '';
+                transition: inherit;
+            }
+        }
+        &::before {
+            @include g.mq('tab') {
+                top: -5px;
+            }
+        }
+        &::after {
+            @include g.mq('tab') {
+                top: 5px;
+            }
+        }
+    } 
+}
+
+//drawer-background
+.js-hamburger-bg {
+    @include g.mq('tab') {
+        position: fixed;
+        z-index: map-get(g.$z, js-hamburger-bg);
+        width: 100vw;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        height: 100vh;
+        background-color: #000;
+        color: #fff;
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+// when drawer is open
+.is-drawer-active .js-header__menu {
+    @include g.mq('tab') {
+        transform: translateX(0px);
+        transition: 0.3s;
+    }
+}
+
+.is-drawer-active .js-hamburger-bg {
+    @include g.mq('tab') {
+        visibility: visible;
+        opacity: 0.8;
+        transition: 0.3s;
+    }
+}
+
+// when hamburger btn is open
+.js-hamburger[aria-expanded="true"] {
+    @include g.mq('tab') {
+        border: 1px solid #000;
+    }
+}
+
+.js-hamburger[aria-expanded="true"] .js-hamburger__line {
+    @include g.mq('tab') {
+        background-color: transparent;
+    }
+    &::before,
+    &::after {
+        @include g.mq('tab') {
+        top: 0;
+        background-color: #000;
+        }
+    }
+}
+
+.js-hamburger[aria-expanded="true"] .js-hamburger__line {
+    &::before {
+        @include g.mq('tab') {
+            transform: rotate(45deg);
+        }
+    }
+    &::after {
+        @include g.mq('tab') {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+//when header menu is open
+.js-header__menu {
+    @include g.mq('tab') {
+        position: fixed;
+        z-index: map-get(g.$z, js-header__menu);
+        width: 280px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        height: 100vh;
+        background-color: #fff;
+        transform: translateX(280px);
+        transition: 0.3s;
+        padding: 8rem 2rem;
+    }
+}
+  
+.header.scroll {
+	background: rgba(0, 0, 0, 0.7);
+    height: 80px;
+}

@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+@use "../global" as g;
+
+.about {
+    padding: 10rem 0 12.5rem;
+    position: relative;
+    @include g.mq('sp') {
+        padding: 7rem 0;
+    }
+    &::after {
+        content: "";
+        background-color: #f3f3f3;
+        height: 150%;
+        width: 40%;
+        position: absolute;
+        top: -10%;
+        left: 30%;
+        transform-origin: left top;
+        transform: skewX(-30deg);
+        z-index: map-get(g.$z, bg);
+        @include g.mq('sp') {
+            left: 40%;
+            width: 50%;
+            height: 105%;
+        }
+    }
+    &__heading {
+        text-align: center;
+        margin-bottom: 6rem;
+    }
+    &__wrapper {
+        @extend %wrapper;
+    }
+    &__list {
+        transform: skewY(2deg);
+        display: flex;
+        justify-content: space-between;
+        @include g.mq('sp') {
+            transform: none;
+            display: block;
+        }
+    }
+    &__item {
+        position: relative;
+        flex-basis: 100%;
+        @include g.mq('sp') {
+            margin-bottom: 5rem;      
+        }
+    }
+    &__item--figure {
+        position: relative;
+        padding-top: 49%;
+        margin: 0 3rem;
+        @include g.mq('sp') {
+            margin: 0;
+        }
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__item--figure::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(50, 50, 50, 0.7);
+        z-index: map-get(g.$z, layer);
+        transition: all .6s ease;
+    }
+    &__item a:hover figure::after {
+        background: rgba(50, 50, 50, 0.4);
+        transition: all .6s ease;
+    }
+    &__item--heading {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) skewY(-2deg);
+        z-index: map-get(g.$z, text);
+        color: #fff;
+        font-size: 2rem;
+        text-align: center;
+        @include g.mq('sp') {
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+  
+  
+  

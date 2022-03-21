@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+@use "variables" as v;
+
+//wrapper 
+%wrapper {
+    width: 95%;
+    max-width: v.$inner-width;
+    margin: 0 auto;
+}

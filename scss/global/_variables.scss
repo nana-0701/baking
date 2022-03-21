@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+//inner width
+$inner-width: 1180px;
+
+//breakpoints
+$breakpoints: (
+  sp: "screen and (max-width: 767px)",
+  tab: "screen and (max-width: #{$inner-width - 1px})",
+  pc: "screen and (min-width: #{$inner-width})",
+);
+
+//image path
+$img-dir: "../images/";
+
+//z-index
+$z: (
+ loading: 40,
+ loading__inner: 35,
+ js-hamburger: 30,
+ js-header__menu: 25,
+ js-hamburger-bg: 20,
+ header: 15,
+ text: 10,
+ layer: 5,
+ bg: -5,
+);
+
+//color
+//main font color
+$font-color1: #333;

@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+@use "../global" as g;
+
+.price {
+    height: 500px;
+    background-image: url(g.$img-dir + "price.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: map-get(g.$z, layer);
+    width: 100%;
+    position: relative;
+    @include g.mq('sp') {
+        background-attachment: scroll;
+        height: 400px;
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        top: 0;
+        left: 0;
+    }
+    &__wrapper {
+        @extend %wrapper;
+    }
+    &__inner {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: map-get(g.$z, text);
+        text-align: left;
+        @include g.mq('sp') {
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            text-align: center;      
+        }
+    }
+    &__heading {
+        color: #fff;
+    }
+    &__text {
+        color: #fff;
+        margin-bottom: 7rem;
+        @include g.mq('sp') {
+            margin-bottom: 3rem;
+        }
+    }
+    &__btn {
+        margin: 0;
+        a {
+            @include g.btn(#fff, 200px, #fff, g.$font-color1);
+        }
+    }
+}
+    
